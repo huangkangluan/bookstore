@@ -38,7 +38,7 @@
 	<div class="list bookList">
 			<table class="table table-striped table-bordered">
 				<!-- On rows -->
-				<tr>
+				<tr class="title">
 					<td>选择</td>
 					<td>书名</td>
 					<td>价格</td>

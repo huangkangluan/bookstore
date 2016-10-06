@@ -13,16 +13,16 @@
     <sql id="userinfoBaseWhereSql">
         <if test="map!=null">
             <where>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userId)">
+                <if test="map.userId!=null">
                     UserId = #{map.userId}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userName)">
+                <if test="map.userName!=null">
                     AND UserName = #{map.userName}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userPwd)">
+                <if test="map.userPwd!=null">
                     AND UserPwd = #{map.userPwd}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.email)">
+                <if test="map.email!=null">
                     AND Email = #{map.email}
                 </if>
             </where>
