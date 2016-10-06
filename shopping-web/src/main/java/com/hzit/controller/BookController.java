@@ -38,6 +38,6 @@ public class BookController {
         Page<Book> list=bookService.findPage(page,5);
         modelMap.put("list",list);
         modelMap.put("countpage",page);
-        return "book";
+        return "find_book";
     }
 }
