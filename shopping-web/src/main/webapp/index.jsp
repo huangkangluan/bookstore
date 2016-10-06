@@ -12,8 +12,8 @@
   </head>
   <body>
   <form action="login" method="post">
-<input type="text" name="user"><br/>
-<input type="password" name="pwd"><br/>
+<input type="text" name="userName"><br/>
+<input type="password" name="userPwd"><br/>
 <input type="submit" value="登录"> &nbsp; &nbsp;<a href="#">注册</a> <br/>
   </form>
   </body>

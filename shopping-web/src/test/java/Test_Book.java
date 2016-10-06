@@ -1,12 +1,20 @@
 import com.fc.platform.commons.page.Page;
 import com.hzit.StartWebApp;
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.entity.Userinfo;
+import com.hzit.service.BookService;
+import com.hzit.service.UserInfoService;
 import com.hzit.service.impl.BookServiceImpl;
+import com.hzit.service.impl.UserInfoServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/10/6.
@@ -15,7 +23,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringApplicationConfiguration(value = StartWebApp.class)
 public class Test_Book {
     @Autowired
-    private BookServiceImpl bookService;
+    private BookService bookService;
+    @Autowired
+    private UserInfoService userInfoService;
     @Test
     public void findall(){
         Page<Book> list=bookService.findPage(0,5);
@@ -23,4 +33,21 @@ public class Test_Book {
             System.out.println(b.getBookName());
         }
     }
+
+    @Test
+    public void login(){
+        //UserInfoServiceImpl us=new UserInfoServiceImpl();
+        Map m=new HashMap();
+        m.put("userName","李斯康");
+        m.put("userPwd","88881");
+        List<Userinfo> list= userInfoService.login(m);
+        if(list!=null){
+            System.out.println("登录成功");
+        }
+        else {
+            System.out.println("失败");
+        }
+    }
 }
+
+
