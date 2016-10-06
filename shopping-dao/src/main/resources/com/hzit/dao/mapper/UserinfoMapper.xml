@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.UserinfoMapper">
+
+    <sql id="userinfoBaseColumnSql">
+        UserId,
+        UserName,
+        UserPwd,
+        Email
+    </sql>
+
+    <sql id="userinfoBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userId)">
+                    UserId = #{map.userId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userName)">
+                    AND UserName = #{map.userName}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userPwd)">
+                    AND UserPwd = #{map.userPwd}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.email)">
+                    AND Email = #{map.email}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertUserinfo" parameterType="com.hzit.dao.entity.Userinfo">
+        INSERT INTO userinfo(
+        <include refid="userinfoBaseColumnSql"/>
+        )VALUES(
+            #{userId},
+            #{userName},
+            #{userPwd},
+            #{email}
+        )
+    </insert>
+
+    
+    <delete id="deleteUserinfoByUserId" parameterType="Integer">
+        DELETE FROM userinfo WHERE UserId = #{userId}
+    </delete>
+
+    <update id="updateUserinfo" parameterType="com.hzit.dao.entity.Userinfo">
+        UPDATE userinfo
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(userName)">
+                UserName = #{userName} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(userPwd)">
+                UserPwd = #{userPwd} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(email)">
+                Email = #{email} ,
+            </if>
+        </set>
+        WHERE UserId = #{userId}
+    </update>
+
+    <select id="searchUserinfoByParams" parameterType="map" resultMap="userinfoMap">
+        SELECT
+        <include refid="userinfoBaseColumnSql"/>
+        FROM userinfo
+        <include refid="userinfoBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.Userinfo" id="userinfoMap">
+        <id column="UserId" property="userId"/>
+        <result column="UserName" property="userName"/>
+        <result column="UserPwd" property="userPwd"/>
+        <result column="Email" property="email"/>
+    </resultMap>
+
+</mapper>

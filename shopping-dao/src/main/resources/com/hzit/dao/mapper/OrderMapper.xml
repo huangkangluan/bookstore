@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzit.dao.mapper.OrderMapper">
+
+    <sql id="orderBaseColumnSql">
+        OrderId,
+        MyOrderId,
+        BookId,
+        OrderNumber,
+        OrderPrice
+    </sql>
+
+    <sql id="orderBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderId)">
+                    OrderId = #{map.orderId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.myOrderId)">
+                    AND MyOrderId = #{map.myOrderId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookId)">
+                    AND BookId = #{map.bookId}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderNumber)">
+                    AND OrderNumber = #{map.orderNumber}
+                </if>
+                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.orderPrice)">
+                    AND OrderPrice = #{map.orderPrice}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertOrder" parameterType="com.hzit.dao.entity.Order">
+        INSERT INTO order(
+        <include refid="orderBaseColumnSql"/>
+        )VALUES(
+            #{orderId},
+            #{myOrderId},
+            #{bookId},
+            #{orderNumber},
+            #{orderPrice}
+        )
+    </insert>
+
+    
+    <delete id="deleteOrderByOrderId" parameterType="Integer">
+        DELETE FROM order WHERE OrderId = #{orderId}
+    </delete>
+
+    <update id="updateOrder" parameterType="com.hzit.dao.entity.Order">
+        UPDATE order
+        <set>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(myOrderId)">
+                MyOrderId = #{myOrderId} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(bookId)">
+                BookId = #{bookId} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderNumber)">
+                OrderNumber = #{orderNumber} ,
+            </if>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderPrice)">
+                OrderPrice = #{orderPrice} ,
+            </if>
+        </set>
+        WHERE OrderId = #{orderId}
+    </update>
+
+    <select id="searchOrderByParams" parameterType="map" resultMap="orderMap">
+        SELECT
+        <include refid="orderBaseColumnSql"/>
+        FROM order
+        <include refid="orderBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hzit.dao.entity.Order" id="orderMap">
+        <id column="OrderId" property="orderId"/>
+        <result column="MyOrderId" property="myOrderId"/>
+        <result column="BookId" property="bookId"/>
+        <result column="OrderNumber" property="orderNumber"/>
+        <result column="OrderPrice" property="orderPrice"/>
+    </resultMap>
+
+</mapper>
