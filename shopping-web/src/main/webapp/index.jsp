@@ -11,10 +11,10 @@
     <title></title>
   </head>
   <body>
-  <form action="#" method="post">
+  <form action="login" method="post">
 <input type="text" name="user"><br/>
 <input type="password" name="pwd"><br/>
-<input type="button" value="登录"> &nbsp; &nbsp;<a href="#">注册</a> <br/>
+<input type="submit" value="登录"> &nbsp; &nbsp;<a href="#">注册</a> <br/>
   </form>
   </body>
 </html>
