@@ -1,6 +1,6 @@
-package com.hzit.serivce.impl;
+package com.hzit.service.impl;
 
-import com.hzit.serivce.UserInfoSerivce;
+import com.hzit.service.UserInfoSerivce;
 
 /**
  * Created by Administrator on 2016/10/6.
