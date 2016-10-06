@@ -69,7 +69,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="D:\wu-book\shopping\shopping-web\target/MANIFEST.MF" />
+        <element id="file-copy" path="D:\idea_project\bookstore\shopping-web\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="shopping-web/web/Web" />
     </root>
