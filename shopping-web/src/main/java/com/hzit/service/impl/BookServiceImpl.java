@@ -1,6 +1,7 @@
 package com.hzit.service.impl;
 
 import com.fc.platform.commons.page.Page;
+import com.fc.platform.commons.page.PageRequest;
 import com.hzit.dao.entity.Book;
 import com.hzit.dao.mapper.BookMapper;
 import com.hzit.service.BookService;
@@ -16,6 +17,9 @@ import java.util.List;
 public class BookServiceImpl implements BookService {
     @Autowired
     private BookMapper bookMapper;
+    public BookServiceImpl(){
+        System.out.println("BookServiceImpl业务逻辑对象被创建");
+    }
     @Override
     public List<Book> findBook() {
         return null;
@@ -23,6 +27,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Page<Book> findPage(int page, int count) {
-        return null;
+        PageRequest pageRequest=new PageRequest(page,count);
+        Page<Book> data=bookMapper.searchBookByParams(null, pageRequest);
+        return data;
     }
 }

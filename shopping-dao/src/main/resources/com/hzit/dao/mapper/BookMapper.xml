@@ -14,7 +14,7 @@
     <sql id="bookBaseWhereSql">
         <if test="map!=null">
             <where>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookId)">
+                <if test="map.bookId!=null">
                     BookId = #{map.bookId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.bookName)">
