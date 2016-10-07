@@ -30,7 +30,7 @@ public class UserInfoController {
             return "redirect:/findbook";
         }
         else{
-            return  "redirect:/index";
+            return  "login22";
         }
     }
 }
