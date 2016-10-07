@@ -22,6 +22,19 @@ public class BookVo {
 	 */
 	private String bookNumber;
 	/**
+	 * 购买数量
+	 */
+	private int count;
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	/**
 	 *  图书图片
 	 */
 	private String bookImage;

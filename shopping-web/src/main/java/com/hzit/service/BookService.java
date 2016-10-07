@@ -11,4 +11,5 @@ import java.util.List;
 public interface BookService {
     public List<Book> findBook();
     public Page<Book> findPage(int page,int count);
+    public Book findById(String bookId);
 }
