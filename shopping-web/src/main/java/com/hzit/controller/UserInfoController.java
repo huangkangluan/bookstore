@@ -16,17 +16,21 @@ import java.util.Map;
 public class UserInfoController {
     @Autowired
    private UserInfoService userInfoService;
-    @RequestMapping("/login")
+    @RequestMapping("/log")
     public String login(String userName,String userPwd){
+
         Map m=new HashMap();
+
         m.put("userName",userName);
         m.put("userPwd",userPwd);
+        System.out.println(m);
        List<Userinfo> list=userInfoService.login(m);
+
         if(list!=null) {
             return "findbook";
         }
         else{
-            return  "index.jsp";
+            return  "index";
         }
     }
 }

@@ -20,9 +20,9 @@ public class UserInfoServiceImpl implements UserInfoService {
         @Override
          public List<Userinfo> login(Map map) {
         try{
-            System.out.println("1111");
+
             List<Userinfo> list = userinfoMapper.searchUserinfoByParams(map);
-            System.out.println("2222");
+
             if (list.size()>0) {
                 return list;
             } else {
