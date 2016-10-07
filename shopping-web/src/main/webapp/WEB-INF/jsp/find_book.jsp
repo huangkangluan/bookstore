@@ -23,10 +23,10 @@
 	<div id="navbar">
 		<div class="userMenu">
 			<ul>
-				<li class="current"><a href="find_book.jsp">User首页</a></li>
+				<li class="current"><a href="findbook">User首页</a></li>
 				<li><a href="../../orderlist.html">我的订单</a></li>
-				<li><a href="../../shopping.html">购物车</a></li>
-				<li><a href="#">注销</a></li>
+				<li><a href="cart/shopcart">购物车</a></li>
+				<li><a href="../../login.html">注销</a></li>
 			</ul>
 		</div>
 		<form method="get" name="search" action="">

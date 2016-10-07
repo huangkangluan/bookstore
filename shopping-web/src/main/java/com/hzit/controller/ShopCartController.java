@@ -50,7 +50,7 @@ public class ShopCartController {
             cart.put(bookVo.getBookId(),bookVo);
         }
         session.setAttribute("cart",cart);
-        return "redirect:/toshopcart";
+        return "redirect:/cart/toshopcart";
     }
     @RequestMapping("/toshopcart")
     public String toshopcart(){

@@ -20,7 +20,7 @@
   <div id="navbar">
     <div class="userMenu">
       <ul>
-        <li><a href="index.html">User首页</a></li>
+        <li><a href="../findbook">User首页</a></li>
         <li><a href="orderlist.html">我的订单</a></li>
         <li class="current"><a href="shopping.html">购物车</a></li>
         <li><a href="#">注销</a></li>
@@ -33,13 +33,14 @@
 </div>
 <div id="content" class="wrap">
   <div class="list bookList">
-    <form method="post" name="shoping" action="shopping-success.html">
+    <form method="post" name="shoping" action="cart/shopcart">
       <table>
         <tr class="title">
           <th class="view">图片预览</th>
           <th>书名</th>
           <th class="nums">数量</th>
           <th class="price">价格</th>
+          <th class="price">删除</th>
         </tr>
         <c:forEach items="${cart}" var="g">
         <tr>
@@ -47,6 +48,7 @@
           <td>${g.value.bookName}</td>
           <td><input class="input-text" type="text" name="nums" value="${g.value.count}" /></td>
           <td>￥<span>${g.value.count*g.value.bookPrice}</span></td>
+          <td><a href="#">删除</a></td>
         </tr>
         </c:forEach>
 
@@ -62,6 +64,9 @@
   合众艾特网上书城 &copy; 版权所有
 
 </div>
+<script type="text/javascript">
+
+</script>
 </body>
 </html>
 
