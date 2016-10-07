@@ -1,10 +1,10 @@
-package com.hzit.dao.entity;
+package com.hzit.dao.vo;
 
 /**
  * 
  * @author huangkangluan
  */
-public class Order {
+public class DingdanxxVo {
 	/**
 	 *  主键ID
 	 */
@@ -35,7 +35,7 @@ public class Order {
 	
     /**
      * 主键ID
-     * @return
+     * @return Integer
      */	
     public Integer getOrderId(){
     	return orderId;
@@ -50,7 +50,7 @@ public class Order {
 	
     /**
      * 订单ID
-     * @return
+     * @return Integer
      */	
     public Integer getMyOrderId(){
     	return myOrderId;
@@ -65,7 +65,7 @@ public class Order {
 	
     /**
      * 图书ID
-     * @return
+     * @return Integer
      */	
     public Integer getBookId(){
     	return bookId;
@@ -80,7 +80,7 @@ public class Order {
 	
     /**
      * 购买数量
-     * @return
+     * @return Integer
      */	
     public Integer getOrderNumber(){
     	return orderNumber;
@@ -95,7 +95,7 @@ public class Order {
 	
     /**
      * 交易价格
-     * @return
+     * @return Integer
      */	
     public Integer getOrderPrice(){
     	return orderPrice;

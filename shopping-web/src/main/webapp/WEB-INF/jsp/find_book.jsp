@@ -38,7 +38,7 @@
 	<div class="list bookList">
 			<table class="table table-striped table-bordered">
 				<!-- On rows -->
-				<tr>
+				<tr class="title">
 					<td>选择</td>
 					<td>书名</td>
 					<td>价格</td>
@@ -47,7 +47,7 @@
 				</tr>
 				<c:forEach items="${list.content}" var="b">
 					<tr>
-						<td><input type="checkbox" value="${b.bookId}" name="checkbox" class="checkbox"></td>
+						<td align="center"><input type="checkbox" value="${b.bookId}" name="checkbox" class="checkbox"></td>
 						<td>${b.bookName}</td>
 						<td>${b.bookPrice}</td>
 						<td>${b.bookNumber}</td>
