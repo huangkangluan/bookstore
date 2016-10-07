@@ -10,7 +10,7 @@ import com.fc.platform.commons.page.Pageable;
 
 public interface UserinfoMapper {
 
-	void insertUserinfo(Userinfo userinfo);
+	int insertUserinfo(Userinfo userinfo);
 
 	void deleteUserinfoByUserId(Integer userId);
 
