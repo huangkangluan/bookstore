@@ -13,10 +13,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title></title>
   <style type="text/css">
-    .gw_num{border: 1px solid #dbdbdb;width: 110px;line-height: 26px;overflow: hidden;}
-    .gw_num em{display: block;height: 26px;width: 26px;float: left;color: #7A7979;border-right: 1px solid #dbdbdb;text-align: center;cursor: pointer;}
-    .gw_num .num{display: block;float: left;text-align: center;width: 52px;font-style: normal;font-size: 14px;line-height: 24px;border: 0;}
-    .gw_num em.add{float: right;border-right: 0;border-left: 1px solid #dbdbdb;}
+.min{
+  width: 35px;
+}
+.add{
+  width: 35px;
+}
   </style>
   <link type="text/css" rel="stylesheet" href="../css/style.css" />
 </head>
@@ -40,30 +42,39 @@
 <div id="content" class="wrap">
   <div class="list bookList">
     <form method="post" name="shoping" action="cart/shopcart">
-      <table>
+      <table id="tab">
         <tr class="title">
           <th class="view">图片预览</th>
           <th>书名</th>
           <th class="nums">数量</th>
-          <th class="price">价格</th>
+          <th class="price">单价</th>
+          <th class="price">小计</th>
           <th class="price">删除</th>
         </tr>
-        <c:forEach items="${cart}" var="g">
+        <c:forEach items="${cart}" var="g" varStatus="vs">
         <tr>
           <td class="thumb"><img src="${g.value.bookImage}" /></td>
           <td>${g.value.bookName}</td>
-          <td><input class="input-text" type="text" name="nums" value="${g.value.count}" id="nums"/></td>
-          <td>￥<span  class="totalPrice">${g.value.count*g.value.bookPrice}</span>
-            <input type="hidden" value="${g.value.bookPrice}" class="price" />
+          <td>
+            <input class="min" name="" type="button" value="－" />
+            <input class="input-text" type="text" name="nums" value="${g.value.count}" id="input-text${vs.count}"/>
+            <input class="add" name="" type="button" value="＋" />
           </td>
-          <td><a href="#">删除</a></td>
+          <td>
+            ￥<input type="text" value="${g.value.bookPrice}" id="price${vs.count}">
+          </td>
+          <td>
+            ￥<input type="text" value="${g.value.count*g.value.bookPrice}" id="total">
+            <%--￥<span id="total">${g.value.count*g.value.bookPrice}</span>--%>
+          </td>
+          <td><input type="button" value="删除" class="but"/></td>
         </tr>
         </c:forEach>
 
       </table>
       <div class="button">
-        <h4>总价：￥<span id="sum"></span>元</h4>
-        <input class="input-chart" type="submit" name="submit" value="" />
+        <h4>总价：￥<span id="totalPrice"></span>元</h4>
+        <input class="input-chart" type="submit" name="submit" value=""/>
       </div>
     </form>
   </div>
@@ -75,21 +86,26 @@
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
 <script type="text/javascript">
   $(function(){
-    $(".input-text").blur(function(){
-      var total = $(".price").val()*$(".input-text").val();
-      $(".totalPrice").html(total);
+    $(".input-text").change(function(){
+      var totalPrice=0;
+      for(var i=1;i<10;i++){
+        var total = $("#price"+i).val()*$("#input-text"+i).val();
+        if(!isNaN(total)){
+          totalPrice+= $("#price"+i).val()*$("#input-text"+i).val();
+        }
+        $("#total"+i).html(total);
+      }
+      $("#totalPrice").html(totalPrice);
     })
 
-//    var totalPrice=0;
-//    for(var i=1;i<3;i++){
-//      var nums=$(".input-text"+i).val();
-//      var price=$(".price"+i).val();
-//      var danjia=nums*price;
-//      totalPrice=totalPrice+danjia;
-//    }
-//    $("#sum").html(totalPrice);
-//  })
 
+  $(".but").click(function(){
+    if (window.confirm("您确定要删除吗？")) {
+      $(this).parent().parent().remove();
+      alert("删除成功")
+    }
+  })
+})
 </script>
 </body>
 </html>
