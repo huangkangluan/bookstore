@@ -1,6 +1,7 @@
 package com.hzit.service;
 
 import com.hzit.dao.entity.Userinfo;
+import org.springframework.ui.ModelMap;
 
 import java.util.List;
 import java.util.Map;
@@ -11,4 +12,6 @@ import java.util.Map;
 public interface UserInfoService {
 
     public List<Userinfo> login(Map map);
+
+    public int adduser(Userinfo userinfo);
 }
