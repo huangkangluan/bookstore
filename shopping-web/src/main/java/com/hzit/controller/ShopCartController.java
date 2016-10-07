@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by Administrator on 2016/10/7.
  */
 @Controller
-//@RequestMapping("/cart")
+@RequestMapping("/cart")
 public class ShopCartController {
     @Autowired
     private BookService bookService;
@@ -50,7 +50,7 @@ public class ShopCartController {
             cart.put(bookVo.getBookId(),bookVo);
         }
         session.setAttribute("cart",cart);
-        return "redirect:/cart/toshopcart";
+        return "redirect:/toshopcart";
     }
     @RequestMapping("/toshopcart")
     public String toshopcart(){

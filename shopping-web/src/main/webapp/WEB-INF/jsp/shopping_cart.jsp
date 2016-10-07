@@ -44,7 +44,7 @@
         <c:forEach items="${cart}" var="g">
         <tr>
           <td class="thumb"><img src="${g.value.bookImage}" /></td>
-          <td class="title">${g.value.bookName}</td>
+          <td>${g.value.bookName}</td>
           <td><input class="input-text" type="text" name="nums" value="${g.value.count}" /></td>
           <td>￥<span>${g.value.count*g.value.bookPrice}</span></td>
         </tr>
