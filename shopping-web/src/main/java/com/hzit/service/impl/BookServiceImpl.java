@@ -8,7 +8,9 @@ import com.hzit.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/10/6.
@@ -30,5 +32,17 @@ public class BookServiceImpl implements BookService {
         PageRequest pageRequest=new PageRequest(page,count);
         Page<Book> data=bookMapper.searchBookByParams(null, pageRequest);
         return data;
+    }
+
+    @Override
+    public Book findById(String bookId) {
+        Map map=new HashMap();
+        map.put("bookId",bookId);
+        List<Book> list=bookMapper.searchBookByParams(map);
+        if (list.size()==1){
+            return list.get(0);
+        }else {
+            return null;
+        }
     }
 }

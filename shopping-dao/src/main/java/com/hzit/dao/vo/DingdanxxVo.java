@@ -17,6 +17,25 @@ public class DingdanxxVo {
 	 *  图书ID
 	 */
 	private Integer bookId;
+	private String bookImage;
+	private String bookName;
+
+	public String getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(String bookImage) {
+		this.bookImage = bookImage;
+	}
+
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
 	/**
 	 *  购买数量
 	 */

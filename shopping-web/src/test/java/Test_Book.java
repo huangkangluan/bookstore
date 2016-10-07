@@ -1,8 +1,10 @@
 import com.fc.platform.commons.page.Page;
 import com.hzit.StartWebApp;
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.entity.Dingdanxx;
 import com.hzit.dao.entity.Userinfo;
 import com.hzit.service.BookService;
+import com.hzit.service.DingdanxxService;
 import com.hzit.service.UserInfoService;
 import com.hzit.service.impl.BookServiceImpl;
 import com.hzit.service.impl.UserInfoServiceImpl;
@@ -26,6 +28,8 @@ public class Test_Book {
     private BookService bookService;
     @Autowired
     private UserInfoService userInfoService;
+    @Autowired
+    private DingdanxxService dingdanxxService;
     @Test
     public void findall(){
         Page<Book> list=bookService.findPage(0,5);
@@ -46,6 +50,13 @@ public class Test_Book {
         }
         else {
             System.out.println("失败");
+        }
+    }
+    @Test
+    public void find_Dingdanxx(){
+        List<Dingdanxx> list=dingdanxxService.findAll();
+        for (Dingdanxx d:list){
+            System.out.println(d.getOrderPrice());
         }
     }
 }

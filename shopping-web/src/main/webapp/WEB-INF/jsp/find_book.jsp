@@ -23,10 +23,10 @@
 	<div id="navbar">
 		<div class="userMenu">
 			<ul>
-				<li class="current"><a href="find_book.jsp">User首页</a></li>
+				<li class="current"><a href="findbook">User首页</a></li>
 				<li><a href="../../orderlist.html">我的订单</a></li>
-				<li><a href="../../shopping.html">购物车</a></li>
-				<li><a href="#">注销</a></li>
+				<li><a href="cart/shopcart">购物车</a></li>
+				<li><a href="../../login.html">注销</a></li>
 			</ul>
 		</div>
 		<form method="get" name="search" action="">
@@ -36,6 +36,7 @@
 </div>
 <div id="content" class="wrap">
 	<div class="list bookList">
+		<form action="cart/shopcart" method="post">
 			<table class="table table-striped table-bordered">
 				<!-- On rows -->
 				<tr class="title">
@@ -47,7 +48,7 @@
 				</tr>
 				<c:forEach items="${list.content}" var="b">
 					<tr>
-						<td align="center"><input type="checkbox" value="${b.bookId}" name="checkbox" class="checkbox"></td>
+						<td align="center"><input type="checkbox" value="${b.bookId}" name="bookId" class="checkbox"></td>
 						<td>${b.bookName}</td>
 						<td>${b.bookPrice}</td>
 						<td>${b.bookNumber}</td>
@@ -68,6 +69,7 @@
 				</nav>
 			</div>
 			<div class="button"><input class="input-btn" type="submit" name="submit" value="" /></div>
+		</form>
 	</div>
 </div>
 <div id="footer" class="wrap">
