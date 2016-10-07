@@ -2,15 +2,13 @@ package com.hzit.controller;
 
 import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Book;
-import com.hzit.interceptor.UserInterceptor;
-import com.hzit.service.impl.BookServiceImpl;
+import com.hzit.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
 
 /**
  * Created by Administrator on 2016/10/6.
@@ -19,7 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 //@RequestMapping("/home")
 public class BookController {
     @Autowired
-    private BookServiceImpl bookService;
+    private BookService bookService;
     public BookController(){
         System.out.println("BookController控制器对象被创建");
     }
