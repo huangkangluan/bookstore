@@ -10,11 +10,11 @@ import com.fc.platform.commons.page.Pageable;
 
 public interface DingdanxxMapper {
 
-	void insertOrder(Dingdanxx order);
+	void insertOrder(Dingdanxx dingdanxx);
 
-	void deleteOrderByOrderId(Integer orderId);
+	int deleteOrderByOrderId(Integer orderId);
 
-	void updateOrder(Dingdanxx order);
+	int updateOrder(Dingdanxx dingdanxx);
 
 	Page<Dingdanxx> searchOrderByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
