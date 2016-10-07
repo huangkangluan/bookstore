@@ -27,10 +27,10 @@ public class UserInfoController {
        List<Userinfo> list=userInfoService.login(m);
 
         if(list!=null) {
-            return "findbook";
+            return "redirect:/findbook";
         }
         else{
-            return  "index";
+            return  "redirect:/index";
         }
     }
 }
