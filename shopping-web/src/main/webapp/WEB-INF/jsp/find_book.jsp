@@ -36,6 +36,7 @@
 </div>
 <div id="content" class="wrap">
 	<div class="list bookList">
+		<form action="" method="post">
 			<table class="table table-striped table-bordered">
 				<!-- On rows -->
 				<tr class="title">
@@ -68,6 +69,7 @@
 				</nav>
 			</div>
 			<div class="button"><input class="input-btn" type="submit" name="submit" value="" /></div>
+		</form>
 	</div>
 </div>
 <div id="footer" class="wrap">

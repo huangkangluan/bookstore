@@ -1,6 +1,7 @@
 import com.fc.platform.commons.page.Page;
 import com.hzit.StartWebApp;
 import com.hzit.dao.entity.Book;
+import com.hzit.dao.entity.Dingdanxx;
 import com.hzit.dao.entity.Userinfo;
 import com.hzit.service.BookService;
 import com.hzit.service.DingdanxxService;
@@ -53,7 +54,10 @@ public class Test_Book {
     }
     @Test
     public void find_Dingdanxx(){
-
+        List<Dingdanxx> list=dingdanxxService.findAll();
+        for (Dingdanxx d:list){
+            System.out.println(d.getOrderPrice());
+        }
     }
 }
 

@@ -70,9 +70,9 @@
     </update>
 
     <select id="searchOrderByParams" parameterType="map" resultMap="orderMap">
-        SELECT
-        <include refid="orderBaseColumnSql"/>
-        FROM Dingdanxx
+        SELECT d.OrderId,m.MyOrderId,b.BookImage,b.BookName,d.OrderNumber,d.OrderPrice
+        FROM dingdanxx d JOIN myorder m ON d.MyOrderId=m.MyOrderId
+        JOIN book b ON d.BookId=b.BookId
         <include refid="orderBaseWhereSql"/>
     </select>
 
