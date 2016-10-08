@@ -15,9 +15,9 @@ public class UserInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         System.out.println("我是拦截器,"+o+"发送了一个请求过来");
         HttpSession session=request.getSession();
-//        if (session.getAttribute("user")==null){
-//            response.sendRedirect("login.html");
-//        }
+        if (session.getAttribute("user")==null){
+            response.sendRedirect("login.html");
+        }
         return true;
     }
 

@@ -61,11 +61,10 @@
             <input class="add" name="" type="button" value="＋" />
           </td>
           <td>
-            ￥<input type="text" value="${g.value.bookPrice}" id="price${vs.count}">
+            ￥<span id="price${vs.count}">${g.value.bookPrice}</span>
           </td>
           <td>
-            ￥<input type="text" value="${g.value.count*g.value.bookPrice}" id="total">
-            <%--￥<span id="total">${g.value.count*g.value.bookPrice}</span>--%>
+            ￥<span id="total">${g.value.count*g.value.bookPrice}</span>
           </td>
           <td><input type="button" value="删除" class="but"/></td>
         </tr>
@@ -89,9 +88,9 @@
     $(".input-text").change(function(){
       var totalPrice=0;
       for(var i=1;i<10;i++){
-        var total = $("#price"+i).val()*$("#input-text"+i).val();
+        var total = $("#price"+i).html()*$("#input-text"+i).val();
         if(!isNaN(total)){
-          totalPrice+= $("#price"+i).val()*$("#input-text"+i).val();
+          totalPrice+= $("#price"+i).html()*$("#input-text"+i).val();
         }
         $("#total"+i).html(total);
       }
