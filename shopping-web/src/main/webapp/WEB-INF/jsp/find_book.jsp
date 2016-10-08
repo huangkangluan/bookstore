@@ -36,7 +36,7 @@
 </div>
 <div id="content" class="wrap">
 	<div class="list bookList">
-		<form action="cart/shopcart" method="post">
+		<form action="${pageContext.request.contextPath}/cart/shopcart" method="post">
 			<table class="table table-striped table-bordered">
 				<!-- On rows -->
 				<tr class="title">

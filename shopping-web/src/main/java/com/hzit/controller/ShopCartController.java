@@ -54,13 +54,18 @@ public class ShopCartController {
     }
     @RequestMapping("/toshopcart")
     public String toshopcart(){
-        System.out.println("shoping");
+        System.out.println("shopping");
         return "shopping_cart";
     }
 
-    @RequestMapping("/hello")
-    public String tohello(){
-        System.out.println("hello");
-        return "hello";
+    @RequestMapping("/deleteShopCart")
+    public String deleteShopCart( Integer bookId,HttpSession session){
+        System.out.println("删除购物车功能");
+        Map<Integer,BookVo> cart= (Map<Integer, BookVo>) session.getAttribute("cart");
+        System.out.println(cart);
+        System.out.println(bookId);
+        cart.remove(bookId);
+        session.setAttribute("cart",cart);
+        return "shopping_cart";
     }
 }

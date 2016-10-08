@@ -28,7 +28,7 @@
   <div id="navbar">
     <div class="userMenu">
       <ul>
-        <li><a href="../findbook">User首页</a></li>
+        <li><a href="${pageContext.request.contextPath}/home/findbook">User首页</a></li>
         <li><a href="orderlist.html">我的订单</a></li>
         <li class="current"><a href="shopping.html">购物车</a></li>
         <li><a href="#">注销</a></li>
@@ -53,20 +53,25 @@
         </tr>
         <c:forEach items="${cart}" var="g" varStatus="vs">
         <tr>
-          <td class="thumb"><img src="${g.value.bookImage}" /></td>
+          <td class="thumb">
+            <input type="hidden" value="${g.value.bookId}" id="bookVoid${vs.count}"/>
+            <img src="${g.value.bookImage}" /></td>
           <td>${g.value.bookName}</td>
           <td>
             <input class="min" name="" type="button" value="－" />
-            <input class="input-text" type="text" name="nums" value="${g.value.count}" id="input-text${vs.count}"/>
+            <input class="input-text" type="text" name="nums" value="${g.value.count}" style="width: 30px" id="input-text${vs.count}"/>
             <input class="add" name="" type="button" value="＋" />
           </td>
           <td>
             ￥<span id="price${vs.count}">${g.value.bookPrice}</span>
           </td>
           <td>
-            ￥<span id="total">${g.value.count*g.value.bookPrice}</span>
+            ￥<span id="total${vs.count}">${g.value.count*g.value.bookPrice}</span>
           </td>
-          <td><input type="button" value="删除" class="but"/></td>
+          <td>
+            <a href="${pageContext.request.contextPath}/cart/deleteShopCart?bookId=${g.value.bookId}">删除</a>
+            <%--<button type="button" class="btn" title="${g.value.bookId}">删除</button>--%>
+          </td>
         </tr>
         </c:forEach>
 
@@ -85,26 +90,40 @@
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
 <script type="text/javascript">
   $(function(){
+    update();
     $(".input-text").change(function(){
-      var totalPrice=0;
-      for(var i=1;i<10;i++){
-        var total = $("#price"+i).html()*$("#input-text"+i).val();
-        if(!isNaN(total)){
-          totalPrice+= $("#price"+i).html()*$("#input-text"+i).val();
-        }
-        $("#total"+i).html(total);
-      }
-      $("#totalPrice").html(totalPrice);
+      update();
     })
+//      var bookid=$("#bookVoid").length;
+      function update(){
+        var totalPrice=0;
+        for(var i=0;i<10;i++){
+          var total =parseFloat( $("#price"+i).text())*$("#input-text"+i).val();
 
-
-  $(".but").click(function(){
-    if (window.confirm("您确定要删除吗？")) {
-      $(this).parent().parent().remove();
-      alert("删除成功")
-    }
+          if(!isNaN(total)){
+            totalPrice+= parseFloat( $("#price"+i).text())*$("#input-text"+i).val();
+          }
+          $("#total"+i).html(total.toFixed(2));
+        }
+        $("#totalPrice").html(totalPrice.toFixed(2));
+      }
   })
-})
+
+
+  <%--$(".btn").click(function(){--%>
+    <%--if(window.confirm("您确定要删除吗？")) {--%>
+      <%--var bookId = $(this).attr("title")--%>
+      <%--$.post("${pageContext.request.contextPath}/cart/deleteShopCart", {bookId: bookId}, function (data) {--%>
+        <%--if (data == 1) {--%>
+          <%--alert("删除成功！");--%>
+          <%--location.reload();--%>
+        <%--} else {--%>
+          <%--alert("删除失败！");--%>
+        <%--}--%>
+      <%--})--%>
+    <%--}--%>
+  <%--})--%>
+
 </script>
 </body>
 </html>
