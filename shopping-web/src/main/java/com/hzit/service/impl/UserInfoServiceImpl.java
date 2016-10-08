@@ -19,13 +19,16 @@ public class UserInfoServiceImpl implements UserInfoService {
    @Autowired
     private UserinfoMapper userinfoMapper;
         @Override
-         public List<Userinfo> login(Map map) {
+         public Userinfo login(String userName,String passWord) {
+
         try{
+            Map m=new HashMap();
+            m.put("userName",userName);
+            m.put("passWord",passWord);
+            List<Userinfo> list = userinfoMapper.searchUserinfoByParams(m);
 
-            List<Userinfo> list = userinfoMapper.searchUserinfoByParams(map);
-
-            if (list.size()>0) {
-                return list;
+            if (list.size()==1) {
+                return list.get(0);
             } else {
                 return null;
             }

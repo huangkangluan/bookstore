@@ -47,16 +47,16 @@ public class Test_Book {
     @Test
     public void login(){
         //UserInfoServiceImpl us=new UserInfoServiceImpl();
-        Map m=new HashMap();
-        m.put("userName","李斯康");
-        m.put("userPwd","88881");
-        List<Userinfo> list= userInfoService.login(m);
-        if(list!=null){
-            System.out.println("登录成功");
-        }
-        else {
-            System.out.println("失败");
-        }
+//        Map m=new HashMap();
+//        m.put("userName","李斯康");
+//        m.put("userPwd","88881");
+//        List<Userinfo> list= userInfoService.login(m);
+//        if(list!=null){
+//            System.out.println("登录成功");
+//        }
+//        else {
+//            System.out.println("失败");
+//        }
     }
     @Test
     public void find_Dingdanxx(){

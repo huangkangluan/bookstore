@@ -22,14 +22,11 @@ public class UserInfoController {
     @Autowired
    private UserInfoService userInfoService;
     @RequestMapping("/log")
-    public String login(@RequestParam("userName")String userName,@RequestParam("userPwd")String userPwd,HttpSession session){
+    public String login(@RequestParam("userName")String userName,@RequestParam("passWord")String passWord,HttpSession session){
 
-        Map m=new HashMap();
 
-        m.put("userName",userName);
-        m.put("userPwd",userPwd);
-        System.out.println(m);
-       List<Userinfo> list=userInfoService.login(m);
+
+       Userinfo list=userInfoService.login(userName,passWord);
 
         if(list!=null) {
             session.setAttribute("user",list);
