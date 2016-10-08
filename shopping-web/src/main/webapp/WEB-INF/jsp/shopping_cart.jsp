@@ -13,10 +13,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title></title>
   <style type="text/css">
-    .gw_num{border: 1px solid #dbdbdb;width: 110px;line-height: 26px;overflow: hidden;}
-    .gw_num em{display: block;height: 26px;width: 26px;float: left;color: #7A7979;border-right: 1px solid #dbdbdb;text-align: center;cursor: pointer;}
-    .gw_num .num{display: block;float: left;text-align: center;width: 52px;font-style: normal;font-size: 14px;line-height: 24px;border: 0;}
-    .gw_num em.add{float: right;border-right: 0;border-left: 1px solid #dbdbdb;}
+.min{
+  width: 35px;
+}
+.add{
+  width: 35px;
+}
   </style>
   <link type="text/css" rel="stylesheet" href="../css/style.css" />
 </head>
@@ -26,7 +28,7 @@
   <div id="navbar">
     <div class="userMenu">
       <ul>
-        <li><a href="../findbook">User首页</a></li>
+        <li><a href="${pageContext.request.contextPath}/home/findbook">User首页</a></li>
         <li><a href="orderlist.html">我的订单</a></li>
         <li class="current"><a href="shopping.html">购物车</a></li>
         <li><a href="#">注销</a></li>
@@ -40,30 +42,44 @@
 <div id="content" class="wrap">
   <div class="list bookList">
     <form method="post" name="shoping" action="cart/shopcart">
-      <table>
+      <table id="tab">
         <tr class="title">
           <th class="view">图片预览</th>
           <th>书名</th>
           <th class="nums">数量</th>
-          <th class="price">价格</th>
+          <th class="price">单价</th>
+          <th class="price">小计</th>
           <th class="price">删除</th>
         </tr>
+        <c:set var="sum" value="0"></c:set>
         <c:forEach items="${cart}" var="g">
         <tr>
-          <td class="thumb"><img src="${g.value.bookImage}" /></td>
+          <td class="thumb">
+            <img src="${g.value.bookImage}" /></td>
           <td>${g.value.bookName}</td>
-          <td><input class="input-text" type="text" name="nums" value="${g.value.count}" id="nums"/></td>
-          <td>￥<span  class="totalPrice">${g.value.count*g.value.bookPrice}</span>
-            <input type="hidden" value="${g.value.bookPrice}" class="price" />
+          <td>
+            <input class="min" name="" type="button" value="－" />
+            <input class="input-text" bookId="${g.value.bookId}" count="${g.value.count}" price="${g.value.bookPrice}" type="text" name="nums" value="${g.value.count}" style="width: 30px"/>
+            <input class="add" name="" type="button" value="＋" />
           </td>
-          <td><a href="#">删除</a></td>
+          <td>
+            ￥<span>${g.value.bookPrice}</span>
+          </td>
+          <td>
+            ￥<span id="total">${g.value.count*g.value.bookPrice}</span>
+          </td>
+          <td>
+            <a href="javascript:void(0)" class="del" bookId="${g.value.bookId}">删除</a>
+            <%--<button type="button" class="btn" title="${g.value.bookId}">删除</button>--%>
+          </td>
+          <c:set var="sum" value="${sum+g.value.count*g.value.bookPrice}"></c:set>
         </tr>
         </c:forEach>
 
       </table>
       <div class="button">
-        <h4>总价：￥<span id="sum"></span>元</h4>
-        <input class="input-chart" type="submit" name="submit" value="" />
+        <h4>总价：￥<span id="totalPrice">${sum}</span>元</h4>
+        <input class="input-chart" type="submit" name="submit" value=""/>
       </div>
     </form>
   </div>
@@ -76,19 +92,50 @@
 <script type="text/javascript">
   $(function(){
     $(".input-text").blur(function(){
-      var total = $(".price").val()*$(".input-text").val();
-      $(".totalPrice").html(total);
+      //修改页面上的小计价格,并且使用toFixed(2)表示保留两位小数
+      var price=parseFloat($(this).attr("price"));
+      var count=$(this).val();
+      var total =price*count;
+      $(this).parent().next().next().children("span").html(total.toFixed(2));
+      //修改服务器后台存在session中的数量
+      $.post("updatecount",{"bookId":$(this).attr("bookId"),"count":$(this).val()},function(sum){
+        $("#totalPrice").html(sum.toFixed(2));
+      })
+
     })
 
-//    var totalPrice=0;
-//    for(var i=1;i<3;i++){
-//      var nums=$(".input-text"+i).val();
-//      var price=$(".price"+i).val();
-//      var danjia=nums*price;
-//      totalPrice=totalPrice+danjia;
-//    }
-//    $("#sum").html(totalPrice);
+    $(".del").click(function(){
+      $(this).parents("tr").remove();
+      $.post("deleteShopCart",{"bookId":$(this).attr("bookId")},function(sum){
+        $("#totalPrice").html(sum.toFixed(2));
+      })
+    })
+
+  })
+
+
+
+
+//  $(function(){
+//    update();
+//    $(".input-text").change(function(){
+//      update();
+//    })
+////      var bookid=$("#bookVoid").length;
+//      function update(){
+//        var totalPrice=0;
+//        for(var i=0;i<10;i++){
+//          var total =parseFloat( $("#price"+i).text())*$("#input-text"+i).val();
+//
+//          if(!isNaN(total)){
+//            totalPrice+= parseFloat( $("#price"+i).text())*$("#input-text"+i).val();
+//          }
+//          $("#total"+i).html(total.toFixed(2));
+//        }
+//        $("#totalPrice").html(totalPrice.toFixed(2));
+//      }
 //  })
+
 
 </script>
 </body>

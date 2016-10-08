@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,13 +56,39 @@ public class ShopCartController {
     }
     @RequestMapping("/toshopcart")
     public String toshopcart(){
-        System.out.println("shoping");
+        System.out.println("shopping");
         return "shopping_cart";
     }
+    @RequestMapping("/updatecount")
+    @ResponseBody
+    public Object updatecount(@RequestParam("bookId") Integer bookId,@RequestParam("count") Integer count,HttpSession session){
+        System.out.println("这是修改购物车里的数量");
+        Map cart= (Map) session.getAttribute("cart");
+        BookVo bookVo= (BookVo) cart.get(bookId);
+        if (bookVo!=null){
+            bookVo.setCount(count);
+        }
+        double sum=0;
+        Collection<BookVo> value=cart.values();
+        for (BookVo b:value){
+            sum+=b.getCount()*Integer.parseInt(b.getBookPrice());
+        }
+        session.setAttribute("cart",cart);
+        return sum;
+    }
 
-    @RequestMapping("/hello")
-    public String tohello(){
-        System.out.println("hello");
-        return "hello";
+    @RequestMapping("/deleteShopCart")
+    @ResponseBody
+    public Object deleteShopCart(@RequestParam("bookId") Integer bookId,HttpSession session){
+        System.out.println("删除购物车功能");
+        Map cart= (Map) session.getAttribute("cart");
+        cart.remove(bookId);
+        session.setAttribute("cart",cart);
+        double sum=0;
+        Collection<BookVo> value=cart.values();
+        for (BookVo b:value){
+            sum+=b.getCount()*Integer.parseInt(b.getBookPrice());
+        }
+        return sum;
     }
 }

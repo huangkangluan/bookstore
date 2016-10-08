@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+</head>
+<body>
+<input class="min" name="{$vo.goods_id}" type="button" value="-"/>
+<input class="text_box" name="num" type="text" value="{$vo.shop_num}" />
+<input class="add" name="{$vo.goods_id}" type="button" value="+" />
+<script type="text/javascript">
+$('.add').click(function(){ //点击 + 按钮触发
+$('.text_box').val(function(){ //设置数量
+    var t=$(this).parent().find('input[class*=text_box]');
+    t.val(parseInt(t.val())+1)
+});
+$('.text_box').attr('name'); //返回name属性的值为num
+});
+</script>
+</body>
+</html>
