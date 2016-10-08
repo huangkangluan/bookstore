@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +22,7 @@ public class UserInfoController {
     @Autowired
    private UserInfoService userInfoService;
     @RequestMapping("/log")
-    public String login(String userName,String userPwd){
+    public String login(@RequestParam("userName")String userName,@RequestParam("userPwd")String userPwd,HttpSession session){
 
         Map m=new HashMap();
 
@@ -30,7 +32,8 @@ public class UserInfoController {
        List<Userinfo> list=userInfoService.login(m);
 
         if(list!=null) {
-            return "redirect:/findbook";
+            session.setAttribute("user",list);
+            return "redirect:/home/findbook";
         }
         else{
             return  "login.html";

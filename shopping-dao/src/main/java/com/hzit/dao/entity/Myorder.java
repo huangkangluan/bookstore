@@ -8,7 +8,7 @@ public class Myorder {
 	/**
 	 *  订单ID
 	 */
-	private Integer myOrderId;
+	private String myOrderId;
 	/**
 	 *  用户ID
 	 */
@@ -29,7 +29,7 @@ public class Myorder {
 	 * 订单ID
 	 * @param myOrderId
 	 */
-	public void setMyOrderId(Integer myOrderId){
+	public void setMyOrderId(String myOrderId){
 		this.myOrderId = myOrderId;
 	}
 	
@@ -37,7 +37,7 @@ public class Myorder {
      * 订单ID
      * @return
      */	
-    public Integer getMyOrderId(){
+    public String getMyOrderId(){
     	return myOrderId;
     }
 	/**

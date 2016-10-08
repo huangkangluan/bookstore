@@ -1,10 +1,22 @@
 package com.hzit.dao.vo;
 
+import java.util.List;
+
 /**
  * 
  * @author huangkangluan
  */
 public class MyorderVo {
+	private List<BookVo> getbooklist;
+
+	public List<BookVo> getGetbooklist() {
+		return getbooklist;
+	}
+
+	public void setGetbooklist(List<BookVo> getbooklist) {
+		this.getbooklist = getbooklist;
+	}
+
 	/**
 	 *  订单ID
 	 */
@@ -25,10 +37,14 @@ public class MyorderVo {
 	 *  订单状态
 	 */
 	private String myOrderStatus;
+
 	/**
 	 * 订单ID
+	 *
 	 * @param myOrderId
 	 */
+
+
 	public void setMyOrderId(Integer myOrderId){
 		this.myOrderId = myOrderId;
 	}

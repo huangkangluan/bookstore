@@ -8,11 +8,11 @@ public class Dingdanxx {
 	/**
 	 *  主键ID
 	 */
-	private Integer orderId;
+	private String orderId;
 	/**
 	 *  订单ID
 	 */
-	private Integer myOrderId;
+	private String myOrderId;
 	/**
 	 *  图书ID
 	 */
@@ -29,7 +29,7 @@ public class Dingdanxx {
 	 * 主键ID
 	 * @param orderId
 	 */
-	public void setOrderId(Integer orderId){
+	public void setOrderId(String orderId){
 		this.orderId = orderId;
 	}
 	
@@ -37,14 +37,14 @@ public class Dingdanxx {
      * 主键ID
      * @return
      */	
-    public Integer getOrderId(){
+    public String getOrderId(){
     	return orderId;
     }
 	/**
 	 * 订单ID
 	 * @param myOrderId
 	 */
-	public void setMyOrderId(Integer myOrderId){
+	public void setMyOrderId(String myOrderId){
 		this.myOrderId = myOrderId;
 	}
 	
@@ -52,7 +52,7 @@ public class Dingdanxx {
      * 订单ID
      * @return
      */	
-    public Integer getMyOrderId(){
+    public String getMyOrderId(){
     	return myOrderId;
     }
 	/**
@@ -74,7 +74,7 @@ public class Dingdanxx {
 	 * 购买数量
 	 * @param orderNumber
 	 */
-	public void setOrderNumber(Integer orderNumber){
+	public void setOrderNumber(int orderNumber){
 		this.orderNumber = orderNumber;
 	}
 	
@@ -89,7 +89,7 @@ public class Dingdanxx {
 	 * 交易价格
 	 * @param orderPrice
 	 */
-	public void setOrderPrice(Integer orderPrice){
+	public void setOrderPrice(int orderPrice){
 		this.orderPrice = orderPrice;
 	}
 	

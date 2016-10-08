@@ -16,11 +16,11 @@ public class BookVo {
 	/**
 	 *  图书价格
 	 */
-	private String bookPrice;
+	private int bookPrice;
 	/**
 	 *  库存数量
 	 */
-	private String bookNumber;
+	private int bookNumber;
 	/**
 	 * 购买数量
 	 */
@@ -72,7 +72,7 @@ public class BookVo {
 	 * 图书价格
 	 * @param bookPrice
 	 */
-	public void setBookPrice(String bookPrice){
+	public void setBookPrice(int bookPrice){
 		this.bookPrice = bookPrice;
 	}
 	
@@ -80,14 +80,14 @@ public class BookVo {
      * 图书价格
      * @return String
      */	
-    public String getBookPrice(){
+    public int getBookPrice(){
     	return bookPrice;
     }
 	/**
 	 * 库存数量
 	 * @param bookNumber
 	 */
-	public void setBookNumber(String bookNumber){
+	public void setBookNumber(int bookNumber){
 		this.bookNumber = bookNumber;
 	}
 	
@@ -95,7 +95,7 @@ public class BookVo {
      * 库存数量
      * @return String
      */	
-    public String getBookNumber(){
+    public int getBookNumber(){
     	return bookNumber;
     }
 	/**

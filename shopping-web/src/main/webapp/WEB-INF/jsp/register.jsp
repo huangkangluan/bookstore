@@ -11,6 +11,18 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title></title>
   <link type="text/css" rel="stylesheet" href="css/style.css" />
+  <script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+    $("#input").click(function(){
+//      var pwd=$("#userpass1").value;
+//      var pwd2=$("#userpass1").value;
+//      if(pwd!=pwd2){
+        alert("两次密码不一致")
+//      }
+    })
+    })
+  </script>
 </head>
 <body>
 <div id="header" class="wrap">
@@ -36,13 +48,13 @@
       <dt>用 户 名：</dt>
       <dd><input class="input-text" type="text" name="userName" /><span>当前用户已存在！</span></dd>
       <dt>密　　码：</dt>
-      <dd><input class="input-text" type="password" name="userPwd" /><span>密码过于简单！</span></dd>
+      <dd><input class="input-text" type="password" name="userPwd" id="userpass1" /><span>密码过于简单！</span></dd>
       <dt>确认密码：</dt>
-      <dd><input class="input-text" type="password" name="userPwd /><span>两次密码输入不一致！</span></dd>
+      <dd><input class="input-text" type="password" name="userPwd"id="userpass2"/><span>两次密码输入不一致！</span></dd>
       <dt>Email地址：</dt>
       <dd><input class="input-text" type="text" name="email" /><span>邮箱输入不正确！</span></dd>
       <dt></dt>
-      <dd class="button"><input class="input-reg" type="submit" name="register" value="" /></dd>
+      <dd class="button"><input class="input-reg" type="submit" name="register" value="" id="input"/></dd>
     </dl>
   </form>
 </div>

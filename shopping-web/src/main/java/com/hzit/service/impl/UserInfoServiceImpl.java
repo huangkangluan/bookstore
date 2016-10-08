@@ -39,6 +39,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Override
     public int adduser(Userinfo userinfo) {
        int us= userinfoMapper.insertUserinfo(userinfo);
+
         if(us==1){
             System.out.println("注册成功");
             return 1;

@@ -1,5 +1,9 @@
 package com.hzit.dao.vo;
 
+import com.hzit.dao.entity.Dingdanxx;
+
+import java.util.List;
+
 /**
  * 
  * @author huangkangluan
@@ -19,6 +23,7 @@ public class DingdanxxVo {
 	private Integer bookId;
 	private String bookImage;
 	private String bookName;
+
 
 	public String getBookImage() {
 		return bookImage;
