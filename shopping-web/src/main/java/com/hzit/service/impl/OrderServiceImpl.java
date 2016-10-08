@@ -7,6 +7,7 @@ import com.hzit.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -23,6 +24,9 @@ public class OrderServiceImpl implements OrderService{
         //生成一个唯一编号
         String orderid= UUID.randomUUID().toString();
         OrderVo order=new OrderVo();
+        order.setMyOrderId(orderid);
+        order.setUserId(orderVo.getUserId());
+        order.setCreateTime(new Date());
         return false;
     }
 }
