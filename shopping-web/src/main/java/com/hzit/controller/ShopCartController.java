@@ -71,7 +71,7 @@ public class ShopCartController {
         double sum=0;
         Collection<BookVo> value=cart.values();
         for (BookVo b:value){
-            sum+=b.getCount()*Integer.parseInt(b.getBookPrice());
+            sum+=b.getCount()*b.getBookPrice();
         }
         session.setAttribute("cart",cart);
         return sum;
@@ -87,7 +87,7 @@ public class ShopCartController {
         double sum=0;
         Collection<BookVo> value=cart.values();
         for (BookVo b:value){
-            sum+=b.getCount()*Integer.parseInt(b.getBookPrice());
+            sum+=b.getCount()*b.getBookPrice();
         }
         return sum;
     }
