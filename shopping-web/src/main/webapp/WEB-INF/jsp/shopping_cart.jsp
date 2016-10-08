@@ -51,33 +51,34 @@
           <th class="price">小计</th>
           <th class="price">删除</th>
         </tr>
-        <c:forEach items="${cart}" var="g" varStatus="vs">
+        <c:set var="sum" value="0"></c:set>
+        <c:forEach items="${cart}" var="g">
         <tr>
           <td class="thumb">
-            <input type="hidden" value="${g.value.bookId}" id="bookVoid${vs.count}"/>
             <img src="${g.value.bookImage}" /></td>
           <td>${g.value.bookName}</td>
           <td>
             <input class="min" name="" type="button" value="－" />
-            <input class="input-text" type="text" name="nums" value="${g.value.count}" style="width: 30px" id="input-text${vs.count}"/>
+            <input class="input-text" bookId="${g.value.bookId}" count="${g.value.count}" price="${g.value.bookPrice}" type="text" name="nums" value="${g.value.count}" style="width: 30px"/>
             <input class="add" name="" type="button" value="＋" />
           </td>
           <td>
-            ￥<span id="price${vs.count}">${g.value.bookPrice}</span>
+            ￥<span>${g.value.bookPrice}</span>
           </td>
           <td>
-            ￥<span id="total${vs.count}">${g.value.count*g.value.bookPrice}</span>
+            ￥<span id="total">${g.value.count*g.value.bookPrice}</span>
           </td>
           <td>
-            <a href="${pageContext.request.contextPath}/cart/deleteShopCart?bookId=${g.value.bookId}">删除</a>
+            <a href="javascript:void(0)" class="del" bookId="${g.value.bookId}">删除</a>
             <%--<button type="button" class="btn" title="${g.value.bookId}">删除</button>--%>
           </td>
+          <c:set var="sum" value="${sum+g.value.count*g.value.bookPrice}"></c:set>
         </tr>
         </c:forEach>
 
       </table>
       <div class="button">
-        <h4>总价：￥<span id="totalPrice"></span>元</h4>
+        <h4>总价：￥<span id="totalPrice">${sum}</span>元</h4>
         <input class="input-chart" type="submit" name="submit" value=""/>
       </div>
     </form>
@@ -90,39 +91,51 @@
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
 <script type="text/javascript">
   $(function(){
-    update();
-    $(".input-text").change(function(){
-      update();
-    })
-//      var bookid=$("#bookVoid").length;
-      function update(){
-        var totalPrice=0;
-        for(var i=0;i<10;i++){
-          var total =parseFloat( $("#price"+i).text())*$("#input-text"+i).val();
+    $(".input-text").blur(function(){
+      //修改页面上的小计价格,并且使用toFixed(2)表示保留两位小数
+      var price=parseFloat($(this).attr("price"));
+      var count=$(this).val();
+      var total =price*count;
+      $(this).parent().next().next().children("span").html(total.toFixed(2));
+      //修改服务器后台存在session中的数量
+      $.post("updatecount",{"bookId":$(this).attr("bookId"),"count":$(this).val()},function(sum){
+        $("#totalPrice").html(sum.toFixed(2));
+      })
 
-          if(!isNaN(total)){
-            totalPrice+= parseFloat( $("#price"+i).text())*$("#input-text"+i).val();
-          }
-          $("#total"+i).html(total.toFixed(2));
-        }
-        $("#totalPrice").html(totalPrice.toFixed(2));
-      }
+    })
+
+    $(".del").click(function(){
+      $(this).parents("tr").remove();
+      $.post("deleteShopCart",{"bookId":$(this).attr("bookId")},function(sum){
+        $("#totalPrice").html(sum.toFixed(2));
+      })
+    })
+
   })
 
 
-  <%--$(".btn").click(function(){--%>
-    <%--if(window.confirm("您确定要删除吗？")) {--%>
-      <%--var bookId = $(this).attr("title")--%>
-      <%--$.post("${pageContext.request.contextPath}/cart/deleteShopCart", {bookId: bookId}, function (data) {--%>
-        <%--if (data == 1) {--%>
-          <%--alert("删除成功！");--%>
-          <%--location.reload();--%>
-        <%--} else {--%>
-          <%--alert("删除失败！");--%>
-        <%--}--%>
-      <%--})--%>
-    <%--}--%>
-  <%--})--%>
+
+
+//  $(function(){
+//    update();
+//    $(".input-text").change(function(){
+//      update();
+//    })
+////      var bookid=$("#bookVoid").length;
+//      function update(){
+//        var totalPrice=0;
+//        for(var i=0;i<10;i++){
+//          var total =parseFloat( $("#price"+i).text())*$("#input-text"+i).val();
+//
+//          if(!isNaN(total)){
+//            totalPrice+= parseFloat( $("#price"+i).text())*$("#input-text"+i).val();
+//          }
+//          $("#total"+i).html(total.toFixed(2));
+//        }
+//        $("#totalPrice").html(totalPrice.toFixed(2));
+//      }
+//  })
+
 
 </script>
 </body>
