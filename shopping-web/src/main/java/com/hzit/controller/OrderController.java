@@ -24,7 +24,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
     @RequestMapping("/addOrder")
-    public Object addOrder(HttpSession session){
+    public String addOrder(HttpSession session){
         //获取session中用户对象
         Userinfo userinfo= (Userinfo) session.getAttribute("user");
         //获取session中购物车对象
@@ -41,6 +41,6 @@ public class OrderController {
         vo.setUserId(userinfo.getUserId());
         vo.setBookVoList(list);
         boolean boo=orderService.addOrder(vo);
-        return boo;
+        return "myorders";
     }
 }
