@@ -58,13 +58,7 @@ public class Test_Book {
 //            System.out.println("失败");
 //        }
     }
-    @Test
-    public void find_Dingdanxx(){
-        List<Dingdanxx> list=dingdanxxService.findAll();
-        for (Dingdanxx d:list){
-            System.out.println(d.getOrderPrice());
-        }
-    }
+
     @Test
      public void addorder(){
 

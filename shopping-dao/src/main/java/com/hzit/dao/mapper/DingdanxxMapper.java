@@ -3,6 +3,7 @@ package com.hzit.dao.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.hzit.dao.vo.DingdanxxVo;
 import org.apache.ibatis.annotations.Param;
 import com.hzit.dao.entity.Dingdanxx;
 import com.fc.platform.commons.page.Page;
@@ -16,8 +17,8 @@ public interface DingdanxxMapper {
 
 	int updateOrder(Dingdanxx dingdanxx);
 
-	Page<Dingdanxx> searchOrderByParams(@Param("map") Map<String, String> map, Pageable pageable);
+	Page<DingdanxxVo> searchOrderByParams(@Param("map") Map<String, String> map, Pageable pageable);
 
-	List<Dingdanxx> searchOrderByParams(@Param("map") Map<String, String> map);
+	List<DingdanxxVo> searchOrderByParams(@Param("map") Map<String, String> map);
 
 } 

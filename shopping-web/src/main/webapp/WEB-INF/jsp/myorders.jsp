@@ -6,11 +6,24 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title></title>
+  <link type="../../text/css" rel="stylesheet" href="../../css/style.css" />
+  <!-- 新 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+  <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <link type="text/css" rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -41,33 +54,27 @@
         <th class="createTime">下单时间</th>
         <th class="status">订单状态</th>
       </tr>
+<c:forEach items="${list.content}" var="d">
       <tr>
-        <td>10010</td>
-        <td class="thumb"><img src="images/book/book_01.gif" /></td>
-        <td>王五</td>
-        <td>￥18.00</td>
-        <td>2012-12-21 12:00:00</td>
-        <td>已完成</td>
+        <td>${d.myOrderId}</td>
+        <td class="thumb"><img src="${d.bookImage}" /></td>
+        <td>${d.userName}</td>
+        <td>￥${d.orderNumber*d.orderPrice}</td>
+        <td>${d.createTime}</td>
+        <td>${d.myOrderStatus}</td>
       </tr>
-      <tr>
-        <td>10010</td>
-        <td class="thumb"><img src="images/book/book_02.gif" /></td>
-        <td>马六</td>
-        <td>￥18.00</td>
-        <td>2012-12-21 12:00:00</td>
-        <td>已完成</td>
-      </tr>
+</c:forEach>
     </table>
     <div class="page-spliter">
-      <a href="#">&lt;</a>
-      <a href="#">首页</a>
-      <span class="current">1</span>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <span>...</span>
-      <a href="#">尾页</a>
-      <a href="#">&gt;</a>
+      <nav style="text-align: center">
+        <ul class="pagination">
+          <li><a href="findbook?page=${countpage-1}">&laquo;</a></li>
+          <c:forEach var="p" begin="0" end="${list.totalPages-1}">
+            <li><a href="findbook?page=${p}">${p+1}</a></li>
+          </c:forEach>
+          <li><a href="findbook?page=${countpage+1}">&raquo;</a></li>
+        </ul>
+      </nav>
     </div>
     <div class="button"><input class="input-gray" type="submit" name="submit" value="查看一个月前的订单" /><input class="input-gray" type="submit" name="submit" value="查看一个月前的订单" /></div>
   </div>

@@ -41,6 +41,6 @@ public class OrderController {
         vo.setUserId(userinfo.getUserId());
         vo.setBookVoList(list);
         boolean boo=orderService.addOrder(vo);
-        return "myorders";
+        return "redirect:/dingdanxx/findDingdanxx";
     }
 }

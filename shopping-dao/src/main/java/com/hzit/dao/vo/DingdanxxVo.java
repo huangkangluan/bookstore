@@ -1,8 +1,6 @@
 package com.hzit.dao.vo;
 
-import com.hzit.dao.entity.Dingdanxx;
-
-import java.util.List;
+import java.util.Date;
 
 /**
  * 
@@ -16,14 +14,29 @@ public class DingdanxxVo {
 	/**
 	 *  订单ID
 	 */
-	private Integer myOrderId;
+	private String myOrderId;
 	/**
 	 *  图书ID
 	 */
 	private Integer bookId;
+	/**
+	 * 图书表里的图片
+	 */
 	private String bookImage;
-	private String bookName;
+	/**
+	 * 收货人姓名
+	 */
+	private String userName;
 
+	/**
+	 * 订单表里的创建时间
+	 * @return
+	 */
+	private java.util.Date createTime;
+	/**
+	 *  订单状态
+	 */
+	private String myOrderStatus;
 
 	public String getBookImage() {
 		return bookImage;
@@ -33,12 +46,28 @@ public class DingdanxxVo {
 		this.bookImage = bookImage;
 	}
 
-	public String getBookName() {
-		return bookName;
+	public String getMyOrderStatus() {
+		return myOrderStatus;
 	}
 
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
+	public void setMyOrderStatus(String myOrderStatus) {
+		this.myOrderStatus = myOrderStatus;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 	/**
@@ -68,7 +97,7 @@ public class DingdanxxVo {
 	 * 订单ID
 	 * @param myOrderId
 	 */
-	public void setMyOrderId(Integer myOrderId){
+	public void setMyOrderId(String myOrderId){
 		this.myOrderId = myOrderId;
 	}
 	
@@ -76,7 +105,7 @@ public class DingdanxxVo {
      * 订单ID
      * @return Integer
      */	
-    public Integer getMyOrderId(){
+    public String getMyOrderId(){
     	return myOrderId;
     }
 	/**

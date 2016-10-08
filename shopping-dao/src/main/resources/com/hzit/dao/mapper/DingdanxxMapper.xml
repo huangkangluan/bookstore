@@ -69,10 +69,11 @@
         WHERE OrderId = #{orderId}
     </update>
 
-    <select id="searchOrderByParams" parameterType="map" resultMap="orderMap">
-        SELECT d.OrderId,m.MyOrderId,b.BookImage,b.BookName,d.OrderNumber,d.OrderPrice
+    <select id="searchOrderByParams" parameterType="map" resultType="com.hzit.dao.vo.DingdanxxVo">
+        SELECT m.MyOrderId myOrderId,b.BookImage bookImage,u.UserName userName,d.OrderPrice orderPrice,m.CreateTime createTime,m.MyOrderStatus myOrderStatus
         FROM dingdanxx d JOIN myorder m ON d.MyOrderId=m.MyOrderId
         JOIN book b ON d.BookId=b.BookId
+        JOIN userinfo u ON u.UserId=m.UserId
         <include refid="orderBaseWhereSql"/>
     </select>
 
