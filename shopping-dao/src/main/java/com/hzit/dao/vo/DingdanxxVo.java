@@ -1,6 +1,7 @@
 package com.hzit.dao.vo;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -22,7 +23,16 @@ public class DingdanxxVo {
 	/**
 	 * 图书表里的图片
 	 */
-	private String bookImage;
+	private List<String> bookImage;
+
+	public List<String> getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(List<String> bookImage) {
+		this.bookImage = bookImage;
+	}
+
 	/**
 	 * 收货人姓名
 	 */
@@ -38,13 +48,6 @@ public class DingdanxxVo {
 	 */
 	private String myOrderStatus;
 
-	public String getBookImage() {
-		return bookImage;
-	}
-
-	public void setBookImage(String bookImage) {
-		this.bookImage = bookImage;
-	}
 
 	public String getMyOrderStatus() {
 		return myOrderStatus;

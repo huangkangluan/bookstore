@@ -2,6 +2,7 @@ package com.hzit.service;
 
 import com.fc.platform.commons.page.Page;
 import com.hzit.dao.entity.Dingdanxx;
+import com.hzit.dao.entity.Userinfo;
 import com.hzit.dao.vo.DingdanxxVo;
 
 import java.util.List;
@@ -11,5 +12,5 @@ import java.util.List;
  */
 public interface DingdanxxService {
 
-    public Page<DingdanxxVo> findPage(int page,int count);
+    public Page<DingdanxxVo> findPage(Integer userId,int page,int count);
 }

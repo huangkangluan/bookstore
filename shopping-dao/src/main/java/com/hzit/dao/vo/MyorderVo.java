@@ -20,7 +20,7 @@ public class MyorderVo {
 	/**
 	 *  订单ID
 	 */
-	private Integer myOrderId;
+	private String myOrderId;
 	/**
 	 *  用户ID
 	 */
@@ -37,6 +37,24 @@ public class MyorderVo {
 	 *  订单状态
 	 */
 	private String myOrderStatus;
+	private String userName;
+	private List<String> bookImage;
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public List<String> getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(List<String> bookImage) {
+		this.bookImage = bookImage;
+	}
 
 	/**
 	 * 订单ID
@@ -45,7 +63,7 @@ public class MyorderVo {
 	 */
 
 
-	public void setMyOrderId(Integer myOrderId){
+	public void setMyOrderId(String myOrderId){
 		this.myOrderId = myOrderId;
 	}
 	
@@ -53,7 +71,7 @@ public class MyorderVo {
      * 订单ID
      * @return Integer
      */	
-    public Integer getMyOrderId(){
+    public String getMyOrderId(){
     	return myOrderId;
     }
 	/**

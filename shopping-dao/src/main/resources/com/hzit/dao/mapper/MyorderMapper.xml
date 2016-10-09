@@ -69,11 +69,13 @@
         WHERE MyOrderId = #{myOrderId}
     </update>
 
-    <select id="searchMyorderByParams" parameterType="map" resultMap="myorderMap">
-        SELECT
-        <include refid="myorderBaseColumnSql"/>
-        FROM myorder
+    <select id="searchMyorderByParams" parameterType="map" resultType="com.hzit.dao.vo.MyorderVo">
+        SELECT m.MyOrderId myOrderId,b.BookImage bookImage,u.UserName userName,m.MyOrderPrice myOrderPrice,m.CreateTime createTime,m.MyOrderStatus myOrderStatus
+        FROM myorder m JOIN userinfo u ON m.UserId=u.UserId
+        JOIN dingdanxx d ON d.MyOrderId=m.MyOrderId
+        JOIN book b ON d.BookId=b.BookId
         <include refid="myorderBaseWhereSql"/>
+        GROUP BY m.MyOrderId
     </select>
 
     <resultMap type="com.hzit.dao.entity.Myorder" id="myorderMap">
