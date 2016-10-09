@@ -12,6 +12,16 @@ public class DingdanxxVo {
 	 *  主键ID
 	 */
 	private Integer orderId;
+	private Integer userId;
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
 	/**
 	 *  订单ID
 	 */

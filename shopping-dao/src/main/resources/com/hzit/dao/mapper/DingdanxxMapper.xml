@@ -70,11 +70,14 @@
     </update>
 
     <select id="searchOrderByParams" parameterType="map" resultType="com.hzit.dao.vo.DingdanxxVo">
-        SELECT m.MyOrderId myOrderId,b.BookImage bookImage,u.UserName userName,d.OrderPrice orderPrice,m.CreateTime createTime,m.MyOrderStatus myOrderStatus,d.orderNumber orderNumber
+        SELECT m.userId userId,m.MyOrderId myOrderId,b.BookImage bookImage,u.UserName userName,d.OrderPrice orderPrice,m.CreateTime createTime,m.MyOrderStatus myOrderStatus,d.orderNumber orderNumber
         FROM dingdanxx d JOIN myorder m ON d.MyOrderId=m.MyOrderId
         JOIN book b ON d.BookId=b.BookId
         JOIN userinfo u ON u.UserId=m.UserId
-        <include refid="orderBaseWhereSql"/>
+        <if test="map!=null">
+            WHERE m.UserId=#{map.userId}
+        </if>
+
 
     </select>
 

@@ -37,16 +37,8 @@ public class MyorderVo {
 	 *  订单状态
 	 */
 	private String myOrderStatus;
-	private String userName;
 	private List<String> bookImage;
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
 
 	public List<String> getBookImage() {
 		return bookImage;
