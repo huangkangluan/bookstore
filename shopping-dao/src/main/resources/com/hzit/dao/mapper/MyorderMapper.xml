@@ -17,7 +17,7 @@
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.myOrderId)">
                     MyOrderId = #{map.myOrderId}
                 </if>
-                <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.userId)">
+                <if test="map.userId!=null">
                     AND UserId = #{map.userId}
                 </if>
                 <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(map.createTime)">
