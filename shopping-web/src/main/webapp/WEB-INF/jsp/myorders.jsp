@@ -68,11 +68,11 @@
     <div class="page-spliter">
       <nav style="text-align: center">
         <ul class="pagination">
-          <li><a href="findbook?page=${countpage-1}">&laquo;</a></li>
+          <li><a href="findDingdanxx?page=${countpage-1}">&laquo;</a></li>
           <c:forEach var="p" begin="0" end="${list.totalPages-1}">
-            <li><a href="findbook?page=${p}">${p+1}</a></li>
+            <li><a href="findDingdanxx?page=${p}">${p+1}</a></li>
           </c:forEach>
-          <li><a href="findbook?page=${countpage+1}">&raquo;</a></li>
+          <li><a href="findDingdanxx?page=${countpage+1}">&raquo;</a></li>
         </ul>
       </nav>
     </div>

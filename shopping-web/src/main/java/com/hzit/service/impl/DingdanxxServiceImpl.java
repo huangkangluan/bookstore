@@ -23,11 +23,6 @@ public class DingdanxxServiceImpl implements DingdanxxService {
 
 
     @Override
-    public List<DingdanxxVo> findAll() {
-        return null;
-    }
-
-    @Override
     public Page<DingdanxxVo> findPage(int page, int count) {
         PageRequest pageRequest=new PageRequest(page,count);
         Page<DingdanxxVo> data=dingdanxxMapper.searchOrderByParams(null,pageRequest);
