@@ -32,7 +32,7 @@
   <div id="navbar">
     <div class="userMenu">
       <ul>
-        <li><a href="findbook">User首页</a></li>
+        <li><a href="../home/findbook">User首页</a></li>
         <li class="current"><a href="findDingdanxx">我的订单</a></li>
         <li><a href="toshopcart">购物车</a></li>
         <li><a href="zhuxiao">注销</a></li>
