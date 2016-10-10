@@ -24,13 +24,7 @@ public class BookController{
     public BookController(){
         System.out.println("BookController控制器对象被创建");
     }
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        //利用拦截器注册对象。给请求添加一个拦截器对象,并指定要拦截的路径
-//        UserInterceptor userInterceptor=new UserInterceptor();
-//        registry.addInterceptor(userInterceptor).addPathPatterns("/home/**");
-//        super.addInterceptors(registry);
-//    }
+
     @RequestMapping("/findbook")
     public String findBook(@RequestParam(name="page",defaultValue = "0") Integer page, ModelMap modelMap){
         if(page<=0){

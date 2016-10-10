@@ -45,7 +45,7 @@
         )
     </insert>
 
-    
+
     <delete id="deleteMyorderByMyOrderId" parameterType="Integer">
         DELETE FROM myorder WHERE MyOrderId = #{myOrderId}
     </delete>
@@ -84,6 +84,13 @@
         <result column="CreateTime" property="createTime"/>
         <result column="MyOrderPrice" property="myOrderPrice"/>
         <result column="MyOrderStatus" property="myOrderStatus"/>
+        <collection property="bookImage" ofType="com.hzit.dao.vo.BookVo">
+            <id column="BookId" property="bookId"/>
+            <result column="BookName" property="bookName"/>
+            <result column="BookPrice" property="bookPrice"/>
+            <result column="BookNumber" property="bookNumber"/>
+            <result column="BookImage" property="bookImage"/>
+        </collection>
     </resultMap>
 
 </mapper>

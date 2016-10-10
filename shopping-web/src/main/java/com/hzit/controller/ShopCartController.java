@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/cart")
-public class ShopCartController {
+public class ShopCartController extends BaseController{
     @Autowired
     private BookService bookService;
     @RequestMapping("/shopcart")

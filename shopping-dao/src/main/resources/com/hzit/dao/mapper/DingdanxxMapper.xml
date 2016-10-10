@@ -87,6 +87,13 @@
         <result column="BookId" property="bookId"/>
         <result column="OrderNumber" property="orderNumber"/>
         <result column="OrderPrice" property="orderPrice"/>
+        <collection property="bookImage" ofType="com.hzit.dao.vo.BookVo">
+        <id column="BookId" property="bookId"/>
+        <result column="BookName" property="bookName"/>
+        <result column="BookPrice" property="bookPrice"/>
+        <result column="BookNumber" property="bookNumber"/>
+        <result column="BookImage" property="bookImage"/>
+        </collection>
     </resultMap>
 
 </mapper>

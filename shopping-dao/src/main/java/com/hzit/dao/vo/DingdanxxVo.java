@@ -33,13 +33,13 @@ public class DingdanxxVo {
 	/**
 	 * 图书表里的图片
 	 */
-	private List<String> bookImage;
+	private List<BookVo> bookImage;
 
-	public List<String> getBookImage() {
+	public List<BookVo> getBookImage() {
 		return bookImage;
 	}
 
-	public void setBookImage(List<String> bookImage) {
+	public void setBookImage(List<BookVo> bookImage) {
 		this.bookImage = bookImage;
 	}
 

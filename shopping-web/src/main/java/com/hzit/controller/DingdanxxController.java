@@ -27,6 +27,7 @@ public class DingdanxxController {
         }
         Userinfo userinfo= (Userinfo) session.getAttribute("user");
         Page<DingdanxxVo> list=dingdanxxService.findPage(userinfo.getUserId(),page, 5);
+
         modelMap.put("list",list);
         modelMap.put("countpage",page);
         return "myorders";

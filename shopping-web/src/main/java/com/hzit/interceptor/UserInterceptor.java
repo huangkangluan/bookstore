@@ -16,7 +16,7 @@ public class UserInterceptor implements HandlerInterceptor {
         System.out.println("我是拦截器,"+o+"发送了一个请求过来");
         HttpSession session=request.getSession();
         if (session.getAttribute("user")==null){
-            response.sendRedirect("login.html");
+            response.sendRedirect("../login.html");
         }
         return true;
     }
