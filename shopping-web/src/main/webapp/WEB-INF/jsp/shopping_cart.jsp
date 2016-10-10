@@ -29,9 +29,9 @@
     <div class="userMenu">
       <ul>
         <li><a href="${pageContext.request.contextPath}/home/findbook">User首页</a></li>
-        <li><a href="orderlist.html">我的订单</a></li>
-        <li class="current"><a href="shopping.html">购物车</a></li>
-        <li><a href="#">注销</a></li>
+        <li><a href="findDingdanxx">我的订单</a></li>
+        <li class="current"><a href="toshopcart">购物车</a></li>
+        <li><a href="zhuxiao">注销</a></li>
       </ul>
     </div>
     <form method="get" name="search" action="">

@@ -21,19 +21,19 @@ import java.util.Map;
 public class UserInfoController {
     @Autowired
    private UserInfoService userInfoService;
-    @RequestMapping("/log")
+    @RequestMapping("/login2")
     public String login(@RequestParam("userName")String userName,@RequestParam("passWord")String passWord,HttpSession session){
 
 
 
        Userinfo list=userInfoService.login(userName,passWord);
 
-        if(list!=null) {
+        if(userName.equals(list.getUserName())&& passWord.equals(list.getUserPwd())) {
             session.setAttribute("user",list);
             return "redirect:/home/findbook";
         }
         else{
-            return  "login.html";
+            return  "redirect:/denglu.html";
         }
     }
         @RequestMapping("/addu")
@@ -47,4 +47,10 @@ public class UserInfoController {
                 return "register";
             }
         }
+    @RequestMapping("/cart/zhuxiao")
+    public String zhuxiao(HttpSession session){
+        System.out.println("注销用户信息");
+        session.invalidate();
+        return "redirect:/denglu.html";
+    }
 }

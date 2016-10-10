@@ -33,9 +33,9 @@
     <div class="userMenu">
       <ul>
         <li><a href="findbook">User首页</a></li>
-        <li class="current"><a href="orderlist.html">我的订单</a></li>
-        <li><a href="../cart/toshopcart">购物车</a></li>
-        <li><a href="#">注销</a></li>
+        <li class="current"><a href="findDingdanxx">我的订单</a></li>
+        <li><a href="toshopcart">购物车</a></li>
+        <li><a href="zhuxiao">注销</a></li>
       </ul>
     </div>
     <form method="get" name="search" action="">
@@ -58,9 +58,9 @@
       <tr>
         <td>${d.myOrderId}</td>
         <td class="thumb">
-          <%--<c:forEach items="${d.bookImage}" var="img">--%>
-          <img src="${d.bookImage}" />
-          <%--</c:forEach>--%>
+          <c:forEach items="${d.bookImage}" var="img">
+          <img src="${img.bookImage}" />
+          </c:forEach>
         </td>
         <td>${d.userName}</td>
         <td>￥${d.orderNumber*d.orderPrice}</td>

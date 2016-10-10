@@ -16,8 +16,8 @@ import javax.servlet.http.HttpSession;
  * Created by Administrator on 2016/10/8.
  */
 @Controller
-@RequestMapping("/dingdanxx")
-public class DingdanxxController {
+@RequestMapping("/cart")
+public class DingdanxxController extends BaseController{
     @Autowired
     private DingdanxxService dingdanxxService;
     @RequestMapping("/findDingdanxx")

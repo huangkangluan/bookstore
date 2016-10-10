@@ -42,6 +42,6 @@ public class OrderController {
         vo.setBookVoList(list);
         boolean boo=orderService.addOrder(vo);
         session.removeAttribute("cart");
-        return "redirect:/dingdanxx/findDingdanxx";
+        return "redirect:/cart/findDingdanxx";
     }
 }
