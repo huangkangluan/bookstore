@@ -85,7 +85,7 @@
   </div>
 </div>
 <div id="footer" class="wrap">
-  合众艾特网上书城 &copy; 版权所有
+  网上书城 &copy; 版权所有
 
 </div>
 <script type="text/javascript" src="../../js/jquery-1.7.min.js"></script>
