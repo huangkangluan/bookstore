@@ -24,7 +24,7 @@
 </head>
 <body>
 <div id="header" class="wrap">
-  <div id="logo">合众艾特网上书城</div>
+  <div id="logo">网上书城</div>
   <div id="navbar">
     <div class="userMenu">
       <ul>
